@@ -11,11 +11,11 @@ import postRoutes from './routes/post.js';
 
 const app = express();
 
-app.use('/posts', postRoutes);
-
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
+
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = process.env.MONGOLAB_URI;
 const PORT = process.env.PORT || 5000;

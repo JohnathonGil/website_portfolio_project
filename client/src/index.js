@@ -1,13 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import {createStore, applyMiddleware, compose } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
+import thunk from 'redux-thunk';
+import rootReducer from './reducers'
 
 import App from './App';
 import { StyledEngineProvider } from "@mui/material/styles";
 
-ReactDOM.render(
-    <StyledEngineProvider injectFirst> 
-        <App />
-    </StyledEngineProvider>, 
-    document.getElementById('root'));
+const store = configureStore({ 
+    reducer: rootReducer,
+    middleware: [thunk],
+});
+
+const domNode = document.getElementById('root');
+const root = createRoot(domNode);
+
+root.render(
+    <Provider store = {store}>
+          <StyledEngineProvider injectFirst> 
+            <App />
+        </StyledEngineProvider>, 
+    </Provider>);

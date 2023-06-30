@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from '@mui/material';
+import { useDispatch } from 'react-redux';
+
+import { getPosts } from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from "./components/Form/Form";
 import mysticwolf from './images/mysticwolf.png';
 
 const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [dispatch]);
+
     return(
         <Container maxWidth="lg">
             <AppBar sx={{
