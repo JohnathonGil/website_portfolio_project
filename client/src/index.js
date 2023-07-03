@@ -5,8 +5,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
 import rootReducer from './reducers'
 
+
 import App from './App';
 import { StyledEngineProvider } from "@mui/material/styles";
+import './index.css';
 
 const store = configureStore({ 
     reducer: rootReducer,
