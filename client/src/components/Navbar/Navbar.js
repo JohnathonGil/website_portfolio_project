@@ -7,6 +7,10 @@ const Navbar = () => {
 
 const user = null;
 
+const logout = () => {
+    
+};
+
   return (
     <AppBar sx={{
         borderRadius: '15px',
@@ -20,7 +24,7 @@ const user = null;
 
         }} position="static" color="transparent">
             <Box sx={{ display: 'flex', alignItems: 'center', }}>
-                <Typography component={ Link } sx={{ color: '#66ffe6', }} variant="h2" align="center">Artisan Craft</Typography>
+                <Typography component={ Link } to="/" sx={{ color: '#66ffe6', }} variant="h2" align="center">Artisan Craft</Typography>
                 <img sx={{ marginLeft: '15px',}} src={mysticwolf} alt="mysticwolf" height="80"/>
              </Box>
              <Toolbar sx = {{ display: 'flex', justifyContent: 'flex-end', width: '400px', }}>
@@ -32,7 +36,7 @@ const user = null;
                         {user.result.name.charAt(0)}
                         </Avatar>
                         <Typography sx={{ display: 'flex', alignItems: 'center',}} variant="h6">{user.result.name}</Typography>
-                        <Button variant="contained" sx={{}}></Button>
+                        <Button variant="contained" sx={{}} color="secondary" onClick={logout}>Logout</Button>
                     </Box>
                 ) : (
                     <Button component = { Link } to="/auth" variant="contained" color="primary">Sign In</Button>
